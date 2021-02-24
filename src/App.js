@@ -50,9 +50,10 @@ function App() {
   //collectionの削除
   const handleClickDeleteButton = async (index) => {
     const newContract = [...contract];
-    newContract.splice(index, 1);
+    const targetContract = newContract.splice(index, 1)[0];
+    const targetContractId = targetContract.contractId;
+    await db.collection("contract").doc(targetContractId).delete();
     setContract(newContract);
-    db.collection("contract").doc().delete();
   };
 
   //collectionの取得
