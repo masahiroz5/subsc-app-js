@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# サブスクリプション管理アプリ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 概要
+契約中のサブスクリプションを管理できるシンプルなタスク管理アプリです。<br>
+[アプリはこちら](https://subsc-app-js-852b0.web.app/)
+## 製作した経緯
+サブスクリプションの解約を忘れて料金が発生したままになっていた経験があったため、製作に至りました。
 
-## Available Scripts
 
-In the project directory, you can run:
+## デモ
 
-### `npm start`
+- メインページ
+![スクリーンショット 2021-02-25 14 10 13](https://user-images.githubusercontent.com/65212754/109106494-33dd0800-7773-11eb-8d34-5bdf4c8bf126.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## インストール
+- React `npx create-react-app myapp cd my-app`
+- Firebase `npm install -g firebase-tools`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 展開
+- ローカルブラウザで表示するには
 
-### `npm run build`
+`npm start`
+→ http://localhost:3000/ を開く
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`firebase init`→Firestore,hostingを選択
+`firebase login`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+初期設定が`public`になっているので、`build`
+に変更することを注意してください。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm run build`
 
-### `npm run eject`
+`firebase deploy`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 使用技術・環境
+- node 12.14.1
+- React 17.0.1
+- 追加、削除機能：Hooks(useState,useEffect)
+- スタイル：CSS
+- データベース：Firebase Cloud Firestore
+- デプロイ：Firebase Hosting
+- ソースコード管理：GitHub
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## その他
+現在も開発を継続しており、順次実装予定です。  
+実装予定の機能は[Issues](https://github.com/masahiroz5/subsc-app-js/issues)よりご確認いただけます。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 製作者
+[masahiro](https://twitter.com/prograrning)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
