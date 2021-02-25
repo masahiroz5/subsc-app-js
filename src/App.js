@@ -56,68 +56,90 @@ function App() {
     setContract(newContract);
   };
 
-  //collectionの取得
+  //表示エリア
   const contractListItems = contract.map((contract, index) => {
     return (
-      <div key={contract.contractId}>
+      <div key={contract.contractId} className="contract-area">
         <ul>
           <li>
-            契約名：{contract.name}
-            　　　金額：{contract.money}円 　　　契約日：{contract.date}
-            　　　
-            <a href={contract.cancel} target="_blank">
-              退会はこちら
-            </a>
-            <button onClick={() => handleClickDeleteButton(index)}>削除</button>
+            <span className="contract-area-list">契約名：{contract.name}</span>
+            <span className="contract-area-list">金額：{contract.money}円</span>
+            <span className="contract-area-list">契約日：{contract.date}</span>
+            <span className="contract-area-list">
+              <a href={contract.cancel} target="_blank">
+                退会はこちら
+              </a>
+            </span>
+            <button
+              class="btn-delete"
+              onClick={() => handleClickDeleteButton(index)}
+            >
+              削除
+            </button>
           </li>
         </ul>
-      </div>  
+      </div>
     );
   });
+  //インプットエリア
   return (
     <div className="App">
-      <h1>サブスクリプション管理アプリ</h1>
-      <div>
-        <label htmlFor="contractName">契約名：</label>
-        <input
-          type="text"
-          id="contractName"
-          value={contractName}
-          onChange={(event) => {
-            setContractName(event.target.value);
-          }}
-        />
-        <label htmlFor="contractMoney">金額：</label>
-        <input
-          type="number"
-          step="1000"
-          id="contractMoney"
-          value={contractMoney}
-          onChange={(event) => {
-            setContractMoney(event.target.value);
-          }}
-        />
-        <label htmlFor="contractDate">契約日：</label>
-        <input
-          type="date"
-          id="contractDate"
-          value={contractDate}
-          onChange={(event) => {
-            setContractDate(event.target.value);
-          }}
-        />
-        <label htmlFor="contractCancel">退会URL：</label>
-        <input
-          type="text"
-          id="contractCancel"
-          placeholder="https://＊＊＊＊"
-          value={contractCancel}
-          onChange={(event) => {
-            setContractCancel(event.target.value);
-          }}
-        />
+      <h1 className="title">サブスクリプション管理アプリ</h1>
+      <div className="input-area">
+        <p className="input-area-title">
+          契約名：
+          <input
+            type="text"
+            id="contractName"
+            placeholder="契約名を入力"
+            value={contractName}
+            onChange={(event) => {
+              setContractName(event.target.value);
+            }}
+          />
+        </p>
+        <p className="input-area-title">
+          金額：
+          <input
+            type="number"
+            step="1000"
+            placeholder="数字を入力"
+            id="contractMoney"
+            value={contractMoney}
+            onChange={(event) => {
+              setContractMoney(event.target.value);
+            }}
+          />
+        </p>
+        <p className="input-area-title">
+          契約日：
+          <input
+            type="date"
+            id="contractDate"
+            value={contractDate}
+            onChange={(event) => {
+              setContractDate(event.target.value);
+            }}
+          />
+        </p>
+        <p className="input-area-title">
+          退会URL：
+          <input
+            type="text"
+            id="contractCancel"
+            placeholder="https://〜"
+            value={contractCancel}
+            onChange={(event) => {
+              setContractCancel(event.target.value);
+            }}
+          />
+        </p>
+        <div>
+          <button className="btn-add" onClick={handleClickAddButton}>
+            追加
+          </button>
+        </div>
       </div>
-      <button onClick={handleClickAddButton}>追加</button>
       <p>{contractListItems}</p>
     </div>
   );
