@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { db } from "./firebase/firebase";
+import SignUp from "./auth/SignUp";
+import SignIn from "./auth/SignIn";
+import SignOut from "./auth/SignOut";
 
 function App() {
   const [contract, setContract] = useState([]);
@@ -141,6 +144,9 @@ function App() {
         </div>
       </div>
       <p>{contractListItems}</p>
+      <div><SignUp /></div>
+      <div><SignIn /></div>
+      <div><SignOut /></div>
     </div>
   );
 }
