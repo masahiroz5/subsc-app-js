@@ -98,9 +98,11 @@ export const InputArea = () => {
           }}
         />
       </p>
+      <div>
       <button className="btn-add" onClick={handleClickAddButton}>
         追加
       </button>
+      </div>
     </div>
   );
 }

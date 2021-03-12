@@ -1,22 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import { db } from "../firebase/firebase";
 
 export const DisplayArea = () => {
-  
   const [contract, setContract] = useState([]);
-  
-  const DisplayItems = contract.map((contract, index) => {
-    //collectionを削除する関数
-    const handleClickDeleteButton = async (index) => {
-      const newContract = [...contract];
-      const targetContract = newContract.splice(index, 1)[0];
-      const targetContractId = targetContract.contractId;
-      await db.collection("contract").doc(targetContractId).delete();
-      setContract(newContract);
+  //データの取得、変更を検知して表示
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("contract")
+      .onSnapshot((querySnapshot) => {
+        const _contract = querySnapshot.docs.map((doc) => {
+          return {
+            contractId: doc.id,
+            ...doc.data(),
+          };
+        });
+        setContract(_contract);
+      });
+    return () => {
+      unsubscribe();
     };
-    
-    //表示エリア
+  }, []);
+
+  //collectionの削除
+  const handleClickDeleteButton = async (index) => {
+    const newContract = [...contract];
+    const targetContract = newContract.splice(index, 1)[0];
+    const targetContractId = targetContract.contractId;
+    await db.collection("contract").doc(targetContractId).delete();
+    setContract(newContract);
+  };
+
+  //表示エリア
+  const contractListItems = contract.map((contract, index) => {
     return (
       <div key={contract.contractId} className="contract-area">
         <ul>
@@ -40,4 +56,9 @@ export const DisplayArea = () => {
       </div>
     );
   });
+  return (
+    <div>
+      <p>{contractListItems}</p>
+    </div>
+  );
 };
